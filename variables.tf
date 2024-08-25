@@ -13,36 +13,6 @@ variable "virtual_network_name" {
   default = "hg-network"
 }
 
-variable "frontend_subnet_name" {
-  type    = string
-  default = "frontend"
-}
-
-variable "backend_subnet_name" {
-  type    = string
-  default = "backend"
-}
-
-variable "db_subnet_name" {
-  type    = string
-  default = "db"
-}
-
-variable "frontend_subnet_address_prefix" {
-  type    = string
-  default = "10.0.1.0/24"
-}
-
-variable "backend_subnet_address_prefix" {
-  type    = string
-  default = "10.0.2.0/24"
-}
-
-variable "db_subnet_address_prefix" {
-  type    = string
-  default = "10.0.3.0/24"
-}
-
 variable "frontend_nsg_name" {
   type    = string
   default = "frontend-nsg"
@@ -67,3 +37,18 @@ variable "subscription_id" {
   description = "The ID of the Subscription"
   type        = string
 }
+
+variable "subnets" {
+  description = "A map of subnet names to CIDR ranges."
+  default = {
+    frontend = 0
+    backend  = 1
+    database = 2
+  }
+}
+
+variable "vnet_address_space" {
+  description = "The address space of the virtual network."
+  default     = "10.0.0.0/16"
+}
+
